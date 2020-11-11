@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스를 기재한다. -->
+<mapper namespace="com.edu.member.mapper.MemberMapper">
+
+	<!-- 아이디 중복 검사 -->
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM TBL_MEMBER
+		WHERE userid = #{id}	
+	</select>
+
+
+	<!-- 게시판 자료 등록 -->
+	<!-- <insert id="memberInsert" parameterType="com.edu.member.domain.MemberDTO" > -->
+	<insert id="memberInsert">
+		INSERT INTO member 
+				(id, passwd, name, tel, address)
+		VALUES	(#{id}, #{passwd}, #{name}, #{tel}, #{address})
+	</insert>
+
+</mapper>
+
+
+
+
+
+
+
+
