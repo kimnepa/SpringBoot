@@ -24,21 +24,22 @@ public class CartController {
 	
 
 	//카트 목록 보여주기
-	@RequestMapping("/list/{cartno}")
+	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
 	private String cartList(int cartno, Model model) throws Exception {
-		//카트 목록 보여주기 화면으로 가기 전에 보여줄 데이터를 가져와서 model에 담든다.
+		
 		model.addAttribute("list", cartService.cartListService());
-		return "/cart/list/{cartno}";
+		return "/cart/list";
 	}
 	
 	//카트에 담기
 	
 	@RequestMapping(value = "/insertCart", method = { RequestMethod.GET, RequestMethod.POST})
-	public String insertCart(CartDetailDTO cartDetailDTO) throws Exception {
+	public String insertCart(CartDetailDTO cartDetailDTO, Model model) throws Exception {
 		
 		System.out.println(cartDetailDTO);
 		
 		int result = cartService.insertCart(cartDetailDTO);
+		model.addAttribute("list", cartService.cartListService());
 
 		return "/cart/list";
 	}
@@ -47,7 +48,7 @@ public class CartController {
 	
 	//삭제
 	@RequestMapping("/cart/{cartno}")
-	private String cartDelete(@PathVariable int cartno) throws Exception {
+	private String cartDelete(@PathVariable int cartno, Model model) throws Exception {
 		cartService.cartDeleteService(cartno);
 		return "redirect:/cart/list";
 	}
