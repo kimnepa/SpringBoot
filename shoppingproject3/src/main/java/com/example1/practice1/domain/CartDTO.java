@@ -9,18 +9,20 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-
 public class CartDTO {
+		
+			int		cartno;
+			int		cartproductid;
+			Date	cartdate;
+			String	cartuserid;
+			String	productimagefile;
+			String	productimageName;
+			String	productimageOriName;
+			String	productimageUrl;
+			String	productname;
+			int		productprice;
+			int		productsalescnt;
 
-	int		cartno;
-	int		cartproductid;
-	Date	cartdate;
-	String	cartuserid;
-	String	productimagefile;
-	String	productimageName;
-	String	productimageOriName;
-	String	productimageUrl;
-	String	productname;
-	int		productprice;
-	int		productsalescnt;
 }
+
+

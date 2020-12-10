@@ -6,12 +6,14 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+
 import com.example1.practice1.domain.CartDTO;
 import com.example1.practice1.mapper.CartMapper;
 
 @Service("com.example1.practice1.service.CartService")
 public class CartService {
 
+	
 	@Resource(name="com.example1.practice1.mapper.CartMapper")
 	CartMapper cartMapper;
 	
@@ -30,4 +32,8 @@ public class CartService {
 	public int cartDeleteService(int cartno) throws Exception {
 		return cartMapper.cartDelete(cartno);
 	}
+	
+	
+
+	
 }
